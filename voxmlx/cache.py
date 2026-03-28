@@ -45,7 +45,7 @@ class RotatingKVCache:
             self.values = self._temporal_order(self.values)
             self._idx = self.keys.shape[2]
 
-            trim_size = self._idx - self.max_size + 1
+            trim_size = self._idx + keys.shape[2] - self.max_size
             self.keys = self._trim(trim_size, self.keys, keys)
             self.values = self._trim(trim_size, self.values, values)
         self._offset += keys.shape[2]
